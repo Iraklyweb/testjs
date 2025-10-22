@@ -1,3 +1,105 @@
+class Employee {
+    constructor(name, position, baseSalary) {
+        this.name = name;
+        this.position = position;
+        this.baseSalary = baseSalary;
+    }
+
+    calculateSalary(){
+        return this.baseSalary;
+    }
+
+    getInfo(){
+        return `${this.name} ${this.position} `;
+    }
+
+    work(){
+        return `${this.name} выполняет общие задачи`;
+    }
+}
+
+class Developer extends Employee{
+    constructor(name, position, baseSalary, programmingLanguages) {
+        super(name, position, baseSalary);
+        this.programmingLanguages = programmingLanguages
+    }
+
+    calculateSalary(){
+        return (this.baseSalary * 1,2) ;
+    }
+
+    work(){
+
+    }
+}
+
+
+
+
+
+// Создайте сотрудников и протестируйте полиморфизм
+const developer = new Developer('Алексей', 'Senior Developer', 80000, ['JavaScript', 'TypeScript', 'Python']);
+const manager = new Manager('Мария', 'Project Manager', 90000, 8);
+const designer = new Designer('Анна', 'UI/UX Designer', 70000, ['Figma', 'Sketch', 'Adobe XD']);
+
+const employees = [developer, manager, designer];
+
+console.log('=== Информация о сотрудниках ===');
+employees.forEach(emp => {
+    console.log(emp.getInfo());
+    console.log(`Зарплата: ${emp.calculateSalary()}`);
+    console.log(`Работа: ${emp.work()}`);
+    console.log('---');
+});
+
+console.log('=== Специфичные действия ===');
+console.log(developer.code());
+console.log(manager.conductMeeting());
+console.log(designer.createDesign());
+
+// Полиморфное использование
+console.log('=== Полиморфное выполнение работы ===');
+employees.forEach(emp => {
+    console.log(`${emp.name} (${emp.position}): ${emp.work()}`);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 class BankAccount {
     #balance;
     #accountNumber;
@@ -8,14 +110,14 @@ class BankAccount {
         this.#balance = balance;
         this.#owner = owner;
 
-        if (accountNumber.length !== 10 || typeof accountNumber == "string"){
+        if (accountNumber.length !== 10  typeof accountNumber == "string"){
             throw new Error("Ой!");
         }
 
         if (owner !== null) {
             throw new Error("Ой!");
         }
-        if (balance > 0 || typeof accountNumber == 'number') {
+        if (balance > 0  typeof accountNumber == 'number') {
             throw new Error("Ой!");
         }
     }
@@ -81,14 +183,7 @@ try {
 
 
 
-
-
-
-
-
-
-
-/* class Vehicle{
+ class Vehicle{
     constructor(brand,model,year){
         this.brand = brand;
         this.model = model;
@@ -107,11 +202,11 @@ try {
 
     accelerate(speed){
         this.speed = speed += this.speed;
-        return `Скорость увеличена до ${this.speed} км/ч`;
+        return Скорость увеличена до ${this.speed} км/ч;
     }
 
     getInfo(){
-        return `${this.brand} ${this.model} ${this.year} `;
+        return ${this.brand} ${this.model} ${this.year} ;
     }
 }
 
@@ -126,7 +221,7 @@ class Car extends Vehicle{
     }
 
     honk(){
-        return `beep`
+        return beep
     }
 }
 class Motorcycle extends Vehicle{
@@ -140,7 +235,7 @@ class Motorcycle extends Vehicle{
     }
 
     wheelie(){
-        return `Сделал вилли`
+        return Сделал вилли
     }
 
 
@@ -192,24 +287,23 @@ class Book {
     }
 
     getInfo(){
-        return `${this.title} - ${this.author} в ${this.year}`;
+        return ${this.title} - ${this.author} в ${this.year};
     }
-
     borrow() {
         if (this.isAvailable) {
             this.isAvailable = false;
-            return `Книга "${this.title}" выдана`;
+            return Книга "${this.title}" выдана;
         } else {
-            return `Книга "${this.title}" уже выдана`;
+            return Книга "${this.title}" уже выдана;
         }
     }
 
     return() {
         if (!this.isAvailable) {
             this.isAvailable = true;
-            return `Книга "${this.title}" возвращена`;
+            return Книга "${this.title}" возвращена;
         } else {
-            return `Книга "${this.title}" уже в библиотеке`;
+            return Книга "${this.title}" уже в библиотеке;
         }
     }
 
@@ -236,45 +330,4 @@ console.log('=== Возврат книги ===');
 console.log(book1.return());
 console.log(book1.return());
 console.log('После возврата - доступна:', book1.isBookAvailable());
-
-
-
-
-
-/*
-
-
-let num = 42
-let FirstMame = 'irakly'
-const isProgrammer = true
-console.log('test:', FirstMame)
-console.log(num + 10)
-let num2 = num + 10
-console.log(num2)
-
-const resultElement = document.getElementById('result')
-const input1 = document.getElementById('input1')
-const input2 = document.getElementById('input2')
-const submitEl = document.getElementById('submit')
-const plusEl = document.getElementById('plus')
-const minusEl = document.getElementById('minus')
-let action = '+'
-
-plusEl.onclick = function () {
-    action = '+'
-}
-minusEl.onclick = function () {
-    action = '-'
-}
-
-submitEl.onclick = function () {
-
-    if (action == '+') {
-        const sum = Number(input1.value) + Number(input2.value)
-        resultElement.textContent = sum
-    } else {
-        const sum = Number(input1.value) - Number(input2.value)
-        resultElement.textContent = sum
-    }
-}
  */
